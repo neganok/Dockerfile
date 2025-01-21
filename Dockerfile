@@ -76,9 +76,8 @@ RUN npm cache clean --force && \
     npm install -g npm@latest && \
     npm install --legacy-peer-deps async fs request puppeteer-extra puppeteer-extra-plugin-stealth hpack colors set-cookie-parser axios chalk chalk@2
 
-# Cài đặt health check để kiểm tra ứng dụng lắng nghe trên port 3000
-HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
-  CMD curl --fail http://localhost:3000/ || exit 1
+# Mở cổng 3000
+EXPOSE 3000
 
 # Cài đặt entrypoint để khi container chạy sẽ vào shell
 CMD ["/bin/bash"]
