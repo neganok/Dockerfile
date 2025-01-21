@@ -76,8 +76,5 @@ RUN npm cache clean --force && \
     npm install -g npm@latest && \
     npm install --legacy-peer-deps async fs request puppeteer-extra puppeteer-extra-plugin-stealth hpack colors set-cookie-parser axios chalk chalk@2
 
-# Mở cổng 3000
-EXPOSE 3000
-
 # Cài đặt entrypoint để khi container chạy sẽ vào shell
 CMD ["/bin/bash"]
