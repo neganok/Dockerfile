@@ -1,4 +1,4 @@
-# Sử dụng một image cơ sở phù hợp với Ubuntu
+# Sử dụng image cơ sở Ubuntu
 FROM ubuntu:20.04
 
 # Đảm bảo sử dụng non-interactive mode để tránh yêu cầu tương tác
@@ -58,8 +58,8 @@ RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - && \
     apt install -y nodejs
 
 # Clone repository mix và giải nén tệp mix.zip
-RUN git clone https://github.com/neganok/mix && \
-    cd mix && \
+RUN git clone https://github.com/neganok/mix /mix && \
+    cd /mix && \
     unzip mix.zip
 
 # Cài đặt các thư viện Python cần thiết
@@ -68,5 +68,8 @@ RUN pip3 install requests python-telegram-bot pytz termcolor psutil
 # Cài đặt các package Node.js
 RUN npm install async fs request puppeteer-extra puppeteer-extra-plugin-stealth hpack
 
-# Thiết lập entrypoint để container có thể chạy theo yêu cầu
-CMD ["bash"]
+# Thiết lập thư mục làm việc mặc định khi vào container
+WORKDIR /mix
+
+# Cài đặt entrypoint để khi container chạy sẽ vào shell
+CMD ["/bin/bash"]
