@@ -74,7 +74,7 @@ WORKDIR /mix
 # Chỉ cài đặt các package npm khi đã vào thư mục /mix
 RUN npm cache clean --force && \
     npm install -g npm@latest && \
-    npm install --legacy-peer-deps async fs request puppeteer-extra puppeteer-extra-plugin-stealth hpack colors set-cookie-parser axios chalk chalk@2
+    npm install --legacy-peer-deps puppeteer puppeteer-core async fs request puppeteer-extra puppeteer-extra-plugin-stealth hpack colors set-cookie-parser axios chalk chalk@2
 
 # Cài đặt entrypoint để khi container chạy sẽ vào shell
 CMD ["/bin/bash"]
