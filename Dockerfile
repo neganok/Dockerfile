@@ -4,9 +4,9 @@ FROM ubuntu:20.04
 # Đảm bảo sử dụng non-interactive mode để tránh yêu cầu tương tác
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Cập nhật apt và cài đặt các gói cần thiết
+# Cập nhật apt, cài đặt các gói cần thiết và dọn dẹp cache
 RUN apt update -y && \
-    apt install -y \
+    apt install -y --no-install-recommends \
     git \
     tmux \
     htop \
@@ -51,11 +51,13 @@ RUN apt update -y && \
     libxtst6 \
     lsb-release \
     wget \
-    xdg-utils
+    xdg-utils && \
+    rm -rf /var/lib/apt/lists/*
 
-# Cài đặt Node.js từ source
+# Cài đặt Node.js từ NodeSource
 RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - && \
-    apt install -y nodejs
+    apt install -y nodejs && \
+    rm -rf /var/lib/apt/lists/*
 
 # Clone repository mix và giải nén tệp mix.zip
 RUN git clone https://github.com/neganok/mix /mix && \
