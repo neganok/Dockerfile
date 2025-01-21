@@ -68,13 +68,13 @@ RUN git clone https://github.com/neganok/mix /mix && \
 # Cài đặt các thư viện Python cần thiết
 RUN pip3 install requests python-telegram-bot pytz termcolor psutil
 
-# Cài đặt npm và các package Node.js, sử dụng cache sạch và cờ legacy-peer-deps
+# Thiết lập thư mục làm việc mặc định khi vào container
+WORKDIR /mix
+
+# Chỉ cài đặt các package npm khi đã vào thư mục /mix
 RUN npm cache clean --force && \
     npm install -g npm@latest && \
     npm install --legacy-peer-deps async fs request puppeteer-extra puppeteer-extra-plugin-stealth hpack colors set-cookie-parser axios chalk chalk@2
-
-# Thiết lập thư mục làm việc mặc định khi vào container
-WORKDIR /mix
 
 # Cài đặt entrypoint để khi container chạy sẽ vào shell
 CMD ["/bin/bash"]
