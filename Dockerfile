@@ -63,7 +63,7 @@ RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - && \
 # Clone repository mix và giải nén tệp mix.zip
 RUN git clone https://github.com/neganok/mix /mix && \
     cd /mix && \
-    unzip mix.zip
+    if [ -f mix.zip ]; then unzip mix.zip; else echo "mix.zip not found!"; fi
 
 # Cài đặt các thư viện Python cần thiết
 RUN pip3 install requests python-telegram-bot pytz termcolor psutil
