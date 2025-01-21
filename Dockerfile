@@ -79,5 +79,9 @@ RUN npm cache clean --force && \
 # Mở cổng 3000
 EXPOSE 3000
 
+# Cài đặt health check để kiểm tra ứng dụng lắng nghe trên port 3000
+HEALTHCHECK --interval=30s --timeout=10s --retries=5 \
+  CMD curl --fail http://localhost:3000/ || exit 1
+
 # Cài đặt entrypoint để khi container chạy sẽ vào shell
 CMD ["/bin/bash"]
