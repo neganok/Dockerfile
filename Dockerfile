@@ -66,7 +66,7 @@ RUN git clone https://github.com/neganok/mix /mix && \
 RUN pip3 install requests python-telegram-bot pytz termcolor psutil
 
 # Cài đặt các package Node.js
-RUN npm install async fs request puppeteer-extra puppeteer-extra-plugin-stealth hpack
+RUN npm install async fs request puppeteer-extra puppeteer-extra-plugin-stealth hpack colors set-cookie-parser axios chalk chalk@2
 
 # Thiết lập thư mục làm việc mặc định khi vào container
 WORKDIR /mix
