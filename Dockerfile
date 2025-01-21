@@ -15,6 +15,7 @@ RUN apt update -y && \
     zip \
     screen \
     curl \
+    unzip \  # Thêm unzip vào đây
     ca-certificates \
     fonts-liberation \
     libappindicator3-1 \
